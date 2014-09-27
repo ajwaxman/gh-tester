@@ -10,7 +10,8 @@ angular.module('ghTesterApp')
   .controller('LoginCtrl', function ($scope, simpleLogin, $location) {
     $scope.oauthlogin = function(provider) {
       login(provider, {
-        rememberMe: true
+        rememberMe: true,
+        scope: 'public_repo'
       });
     };
 

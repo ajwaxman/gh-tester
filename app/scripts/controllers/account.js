@@ -7,7 +7,7 @@
  * Provides rudimentary account management functions.
  */
 angular.module('ghTesterApp')
-  .controller('AccountCtrl', function ($scope, user, simpleLogin, fbutil, $timeout) {
+  .controller('AccountCtrl', function ($scope, user, simpleLogin, fbutil) {
     $scope.user = user;
     $scope.logout = simpleLogin.logout;
     $scope.messages = [];

@@ -81,6 +81,10 @@ angular.module('ghTesterApp')
         templateUrl: 'views/chat.html',
         controller: 'ChatCtrl'
       })
+      .whenAuthenticated('/issue', {
+        templateUrl: 'views/issue.html',
+        controller: 'IssueCtrl'
+      })
       .otherwise({redirectTo: '/'});
   }])
 

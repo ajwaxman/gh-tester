@@ -1,0 +1,49 @@
+<p>This is the issue view.</p>
+<p>{{user.uid}}</p>
+<p>{{issues.url}}</p>
+<input id="filter" type="text" class="form-control" placeholder="Type here...">
+
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Labels</th>
+      <th>Milestone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="issue in issues">
+      <td>{{issue.number}}</td>
+      <td><a href="{{ createLink(issue.url) }}">{{issue.title}}</a></td> 
+      <td>
+        <span ng-repeat="label in issue.labels">
+          <a href="{{ createLink(label.url) }}">{{ label.name }}</a>{{ $last ? '' : ',' }}
+        </span>
+      </td> 
+      <td>{{issue.milestone ? issue.milestone.title : 'N/A'}}</td> 
+    </tr>
+  </tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+    (function ($) {
+
+        $('#filter').keyup(function () {
+
+            var rex = new RegExp($(this).val(), 'i');
+            $('tbody tr').hide();
+            $('tbody tr').filter(function () {
+                return rex.test($(this).text());
+            }).show();
+
+        })
+
+    }(jQuery));
+
+});
+</script>

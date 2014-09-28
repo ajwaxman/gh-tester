@@ -12,9 +12,10 @@ angular.module('ghTesterApp')
     $scope.user = user;
     $scope.createLink = createLink;
     getIssues();
+
     
     function getIssues() {
-      $http.get('https://api.github.com/repos/awaxman11/gh-tester/issues', { params: { access_token: user.accessToken }})
+      $http.get('https://api.github.com/repos/awaxman11/gh-tester/issues', { params: { access_token : user.accessToken }})
           .success(function (data) {
             $scope.issues = data.reverse();
           })

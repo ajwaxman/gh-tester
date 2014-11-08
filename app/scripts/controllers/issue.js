@@ -15,9 +15,11 @@ angular.module('ghTesterApp')
 
     
     function getIssues() {
-      $http.get('https://api.github.com/repos/awaxman11/gh-tester/issues', { params: { access_token : user.accessToken }})
+      var accessToken = 'access_token';
+      $http.get('https://api.github.com/repos/awaxman11/gh-tester/issues', { params: { accessToken : user.accessToken }})
           .success(function (data) {
             $scope.issues = data.reverse();
+            $scope.accessToken = accessToken;
           })
           .error(function (e) {
             console.log(e);
@@ -28,3 +30,4 @@ angular.module('ghTesterApp')
       return link;
     }
   });
+

@@ -1,0 +1,5 @@
+<h2>Webhooks</h2>
+
+<ul id="webhooks" ng-show="webhooks.length">
+  <li ng-repeat="webhook in webhooks | reverse">{{webhook.action}} issue (#{{webhook.issue.number}}) - {{webhook.issue.title}}</li>
+</ul>

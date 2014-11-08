@@ -77,6 +77,11 @@ angular.module('ghTesterApp')
         controller: 'AccountCtrl'
       })
 
+      .when('/webhooks', {
+        templateUrl: 'views/webhook.html',
+        controller: 'WebhookCtrl'
+      })
+
       .when('/chat', {
         templateUrl: 'views/chat.html',
         controller: 'ChatCtrl'

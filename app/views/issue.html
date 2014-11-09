@@ -15,7 +15,7 @@
   <tbody>
     <tr ng-repeat="issue in issues">
       <td>{{issue.number}}</td>
-      <td><a href="{{ createLink(issue.url) }}">{{issue.title}}</a></td> 
+      <td><a href="{{ issue.html_url }}">{{issue.title}}</a></td> 
       <td>
         <span ng-repeat="label in issue.labels">
           <a href="{{ createLink(label.url) }}">{{ label.name }}</a>{{ $last ? '' : ',' }}

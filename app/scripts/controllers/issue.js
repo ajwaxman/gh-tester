@@ -1,5 +1,7 @@
 'use strict';
 
+/*global Firebase */
+
 /**
  * @ngdoc function
  * @name ghTesterApp.controller:IssueCtrl
@@ -8,26 +10,15 @@
  * Controller of the ghTesterApp
  */
 angular.module('ghTesterApp')
-  .controller('IssueCtrl', function ($scope, $http, user) {
+  .controller('IssueCtrl', function ($scope, $http, user, $firebase) {
     $scope.user = user;
-    $scope.createLink = createLink;
-    getIssues();
-
     
-    function getIssues() {
-      var accessToken = 'access_token';
-      $http.get('https://api.github.com/repos/awaxman11/gh-tester/issues', { params: { accessToken : user.accessToken }})
-          .success(function (data) {
-            $scope.issues = data.reverse();
-            $scope.accessToken = accessToken;
-          })
-          .error(function (e) {
-            console.log(e);
-          });
-    }
-    function createLink(apiLink) {
-      var link = apiLink.replace('https://api.github.com/repos', 'https://github.com');
-      return link;
-    }
+    // Retrieve an array of issues from Firebase
+    var issuesRef = new Firebase('https://luminous-heat-3872.firebaseio.com/issues');
+    var sync = $firebase(issuesRef);
+    var issuesArray = sync.$asArray();
+    $scope.issues = issuesArray;
+
+
   });
 
